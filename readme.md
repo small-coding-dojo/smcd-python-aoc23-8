@@ -7,6 +7,6 @@ https://adventofcode.com/2023/day/8
 
 - install python version 3 and pip
 - install python requirements
-    pip -r requirements.txt
+    pip install -r requirements.txt
 - run tests
     phython3 -m pytest
