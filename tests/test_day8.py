@@ -21,7 +21,8 @@ class Network:
     @staticmethod
     def from_input(text):
         network = Network(Network.get_directions_header(text))
-        nodes = [Node.from_line(Network.get_network_body(text))]
+        create_node = lambda line: Node.from_line((line))
+        nodes = [create_node(line) for line in Network.get_network_body(text).strip().splitlines()]
         network.nodes = nodes
         return network
 
