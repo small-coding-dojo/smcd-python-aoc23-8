@@ -21,7 +21,8 @@ class Network:
     @staticmethod
     def from_input(text):
         network = Network(Network.get_directions_header(text))
-        nodes = [Node.from_line(Network.get_network_body(text))]
+        network_body = Network.get_network_body(text)
+        nodes = [Node.from_line(_) for _ in network_body.strip().splitlines()]
         network.nodes = nodes
         return network
 
@@ -79,3 +80,18 @@ class TestDay8:
         assert result.nodes[0].name == "CCC"
         assert result.nodes[0].left == "ZZZ"
         assert result.nodes[0].right == "GGG"
+
+    def test_parsing_simple_input_delivers_two_nodes_network(self):
+        result = Network.from_input("""L
+
+        CCC = (ZZZ, GGG)
+        ZZZ = (ZZZ, ZZZ)
+        """)
+        assert result.header == "L"
+        assert len(result.nodes) == 2
+        assert result.nodes[0].name == "CCC"
+        assert result.nodes[0].left == "ZZZ"
+        assert result.nodes[0].right == "GGG"
+        assert result.nodes[1].name == "ZZZ"
+        assert result.nodes[1].left == "ZZZ"
+        assert result.nodes[1].right == "ZZZ"
