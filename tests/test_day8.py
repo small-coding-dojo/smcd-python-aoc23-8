@@ -27,6 +27,14 @@ class Network:
         return network
 
     @staticmethod
+    def from_file(filepath):
+        f = open(filepath, "r")
+        file_input = f.read() 
+        f.close()
+
+        return Network.from_input(file_input)
+
+    @staticmethod
     def get_network_body(text):
         return text[text.find("\n") + 1:]
 
@@ -95,3 +103,7 @@ class TestDay8:
         assert result.nodes[1].name == "ZZZ"
         assert result.nodes[1].left == "ZZZ"
         assert result.nodes[1].right == "ZZZ"
+
+    def test_parsing_file_with_two_nodes_network(self):
+        result = Network.from_file("tests/simple_2_nodes_network.txt")
+        assert len(result.nodes) == 2

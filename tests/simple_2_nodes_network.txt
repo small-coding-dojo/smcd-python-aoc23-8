@@ -1,0 +1,4 @@
+L
+
+CCC = (ZZZ, GGG)
+ZZZ = (ZZZ, ZZZ)
