@@ -109,6 +109,5 @@ class TestDay8:
         assert len(result.nodes) == 2
 
     def test_parsing_mmgs_inputfile_(self):
-        print gmtime()
         result = Network.from_file("data/full_input_mmg.txt")
         assert len(result.nodes) == 746
