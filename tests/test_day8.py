@@ -1,4 +1,6 @@
+import os
 import re
+from pathlib import Path
 
 
 class Node:
@@ -109,5 +111,6 @@ class TestDay8:
         assert len(result.nodes) == 2
 
     def test_parsing_mmgs_inputfile_(self):
-        result = Network.from_file("data/full_input_mmg.txt")
+        dir = os.path.realpath(__file__)
+        result = Network.from_file(dir + "/../data/full_input_mmg.txt")
         assert len(result.nodes) == 746
